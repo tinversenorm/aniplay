@@ -44,7 +44,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
             controller.searchBar.backgroundColor = UIColor.lightGrayColor();
             self.tableView.tableHeaderView = controller.searchBar;
             return controller;
-        })()
+        })();
     }
     
     func makeLayout() {
@@ -120,7 +120,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filteredTableData.removeAll(keepCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text);
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[cd] %@", searchController.searchBar.text);
         let array = (Array(AnimeData.animeidsreverse.keys) as NSArray).filteredArrayUsingPredicate(searchPredicate)
         filteredTableData = array as! [String]
         println(filteredTableData);

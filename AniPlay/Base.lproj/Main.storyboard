@@ -207,6 +207,8 @@
                     <tabBarItem key="tabBarItem" title="Current" image="Updated_Icon_Tab_Small.png" id="3Za-Zr-wuc"/>
                     <connections>
                         <outlet property="navBar" destination="YFP-An-eRd" id="rcU-4V-hgq"/>
+                        <outlet property="tableView" destination="w2N-s9-IcI" id="IDt-u8-jLN"/>
+                        <segue destination="vUh-a4-PFV" kind="presentation" identifier="showAnimeCurrent" modalPresentationStyle="currentContext" id="ner-Ju-hBJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RO9-cD-Gf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,7 +685,8 @@
         <image name="Updated_Icon_Tab_Small.png" width="49" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g3M-E6-5Ke"/>
         <segue reference="xhz-xG-S0g"/>
+        <segue reference="POP-cV-HF9"/>
+        <segue reference="ner-Ju-hBJ"/>
     </inferredMetricsTieBreakers>
 </document>

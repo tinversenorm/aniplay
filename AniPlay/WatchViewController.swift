@@ -21,8 +21,8 @@ class WatchViewController: UIViewController {
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right;
         self.webView.addGestureRecognizer(swipeRight);
-        
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://pranavh.webfactional.com/aniplay/showvideo.php?link=" + link)!));
+        //NSURL(string: "http://pranavh.webfactional.com/aniplay/showvideo.php?link=" + link)!)
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: link)!));
     }
     
     func unwind(gesture: UIGestureRecognizer) {

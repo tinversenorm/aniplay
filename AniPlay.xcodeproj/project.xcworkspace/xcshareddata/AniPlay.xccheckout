@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9243B73C-5823-46CD-B1C7-6E7F1AED6684</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AniPlay</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ACD68D9B8D2ED60C7C80753E84ADD2445AA55F2A</key>
+		<string>https://github.com/tinversenorm/aniplay.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AniPlay.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ACD68D9B8D2ED60C7C80753E84ADD2445AA55F2A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tinversenorm/aniplay.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ACD68D9B8D2ED60C7C80753E84ADD2445AA55F2A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ACD68D9B8D2ED60C7C80753E84ADD2445AA55F2A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>aniplay</string>
+		</dict>
+	</array>
+</dict>
+</plist>
