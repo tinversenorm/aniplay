@@ -109,7 +109,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func goToWatched(sender: AnyObject) {
-        tabBarController?.selectedIndex = 2;
         performSegueWithIdentifier("hometowatchedtab", sender: sender);
     }
     
@@ -122,17 +121,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
             var destTabBarController:UITabBarController = segue.destinationViewController as! UITabBarController;
             destTabBarController.selectedIndex = 2;
         }
-    }
-    
-    // Use for search
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
-        performSegueWithIdentifier("searchAnime", sender: textField);
-        return true;
-    }
-    
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

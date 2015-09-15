@@ -9,9 +9,7 @@
 
 import UIKit
 
-
-
-class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
     
@@ -22,29 +20,29 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationBar!
     
+    @IBAction func unwindToAll(segue: UIStoryboardSegue) {
+    }
+    
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
     
-    @IBAction func unwindToAll(segue: UIStoryboardSegue) {
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad();
         self.navigationController?.navigationBarHidden = true;
         tableView.delegate = self;
         tableView.dataSource = self;
+        resultSearchController.delegate = self;
         makeLayout();
-        self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil);
-            controller.searchResultsUpdater = self;
-            controller.dimsBackgroundDuringPresentation = false;
-            controller.searchBar.sizeToFit();
-            controller.searchBar.barStyle = UIBarStyle.Default;
-            controller.searchBar.barTintColor = UIColor.whiteColor();
-            controller.searchBar.backgroundColor = UIColor.lightGrayColor();
-            self.tableView.tableHeaderView = controller.searchBar;
-            return controller;
-        })();
+        
+        filteredTableData = AnimeData.nameList;
+        
+        resultSearchController = UISearchController(searchResultsController: nil);
+        resultSearchController.searchResultsUpdater = self;
+        resultSearchController.dimsBackgroundDuringPresentation = false;
+        resultSearchController.searchBar.sizeToFit();
+        tableView.tableHeaderView = resultSearchController.searchBar;
+        definesPresentationContext = true;
     }
     
     func makeLayout() {
@@ -62,7 +60,11 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return alphabet;
+        if self.resultSearchController.active {
+            return nil;
+        } else {
+            return alphabet;
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -88,7 +90,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     // defines contents of each indiv. cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // identifier ids cell
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "anime_all")
+        let cell = tableView.dequeueReusableCellWithIdentifier("anime_all") as! UITableViewCell;
         // indexpath tells you row
         var sect = alphabet[indexPath.section]; // letter
         
@@ -115,16 +117,21 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.resultSearchController.active = false
+            self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
+        })
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filteredTableData.removeAll(keepCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[cd] %@", searchController.searchBar.text);
-        let array = (Array(AnimeData.animeidsreverse.keys) as NSArray).filteredArrayUsingPredicate(searchPredicate)
-        filteredTableData = array as! [String]
-        println(filteredTableData);
-        self.tableView.reloadData()
+        let searchText = searchController.searchBar.text
+        
+        filteredTableData = searchText.isEmpty ? AnimeData.nameList : AnimeData.nameList.filter({(dataString: String) -> Bool in
+            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
+        
+        tableView.reloadData()
+
     }
     
     override func didReceiveMemoryWarning() {

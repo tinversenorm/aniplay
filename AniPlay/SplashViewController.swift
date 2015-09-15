@@ -13,6 +13,7 @@ struct AnimeData {
     static var animeinfo = Dictionary<String, [String:String]>(); // ID -> DB Info
     static var animeids = Dictionary<String, String>(); // ID -> Anime
     static var animeidsreverse = Dictionary<String, String>(); // Anime name -> ID
+    static var nameList = [String]();
 }
 
 class SplashViewController: UIViewController {
@@ -103,6 +104,9 @@ class SplashViewController: UIViewController {
                     }
                     AnimeData.animelist[key] = newval;
                 }
+                
+                // store all names in animelist in array
+                AnimeData.nameList = Array(AnimeData.animeidsreverse.keys);
                 
                 // self.tableView.reloadData();
                 // self.activityIndicator.stopAnimating();

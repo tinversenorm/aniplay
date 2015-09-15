@@ -89,6 +89,8 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
             let path = self.tableView.indexPathForSelectedRow()!
             var destVC:WatchViewController = segue.destinationViewController as! WatchViewController;
             destVC.link = self.episodeList[path.row];
+            destVC.animeName = self.animeName;
+            destVC.episodeNumber = String(path.row);
         }
     }
     

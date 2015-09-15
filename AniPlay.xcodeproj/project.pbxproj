@@ -35,7 +35,6 @@
 		40383E101B73B96B00EA5117 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40383E0F1B73B96B00EA5117 /* Images.xcassets */; };
 		40383E131B73B96B00EA5117 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40383E111B73B96B00EA5117 /* LaunchScreen.xib */; };
 		40383E1F1B73B96B00EA5117 /* AniPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40383E1E1B73B96B00EA5117 /* AniPlayTests.swift */; };
-		40383E5B1B73BDAA00EA5117 /* List Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40383E5A1B73BDAA00EA5117 /* List Icon@3x.png */; };
 		403956D01B818AF500309AB4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403956CF1B818AF500309AB4 /* SwiftyJSON.swift */; };
 		403956D21B818E5300309AB4 /* SwifterString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403956D11B818E5300309AB4 /* SwifterString.swift */; };
 		403956D61B842CCD00309AB4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403956D51B842CCD00309AB4 /* SplashViewController.swift */; };
@@ -90,6 +89,7 @@
 		40BF44441B769BE70021AEC2 /* Updated_Icon_Tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 40BF443B1B769BE70021AEC2 /* Updated_Icon_Tab.png */; };
 		40BF44451B769BE70021AEC2 /* Updated_Icon_Tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40BF443C1B769BE70021AEC2 /* Updated_Icon_Tab@2x.png */; };
 		40BF44461B769BE70021AEC2 /* Updated_Icon_Tab@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40BF443D1B769BE70021AEC2 /* Updated_Icon_Tab@3x.png */; };
+		40C177A31BA70C9F00FF6CCE /* List Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C177A21BA70C9F00FF6CCE /* List Icon@3x.png */; };
 		40E5F6D01B9CF5580065B60B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E5F6CF1B9CF5580065B60B /* SearchViewController.swift */; };
 		40E5F6D21B9CFC010065B60B /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E5F6D11B9CFC010065B60B /* WatchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -137,7 +137,6 @@
 		40383E181B73B96B00EA5117 /* AniPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AniPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40383E1D1B73B96B00EA5117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40383E1E1B73B96B00EA5117 /* AniPlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniPlayTests.swift; sourceTree = "<group>"; };
-		40383E5A1B73BDAA00EA5117 /* List Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "List Icon@3x.png"; path = "../../../design/AniPlay/List Icon@3x.png"; sourceTree = "<group>"; };
 		403956CF1B818AF500309AB4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		403956D11B818E5300309AB4 /* SwifterString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterString.swift; sourceTree = "<group>"; };
 		403956D51B842CCD00309AB4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +191,7 @@
 		40BF443B1B769BE70021AEC2 /* Updated_Icon_Tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Updated_Icon_Tab.png; sourceTree = "<group>"; };
 		40BF443C1B769BE70021AEC2 /* Updated_Icon_Tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Updated_Icon_Tab@2x.png"; sourceTree = "<group>"; };
 		40BF443D1B769BE70021AEC2 /* Updated_Icon_Tab@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Updated_Icon_Tab@3x.png"; sourceTree = "<group>"; };
+		40C177A21BA70C9F00FF6CCE /* List Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List Icon@3x.png"; sourceTree = "<group>"; };
 		40E5F6CF1B9CF5580065B60B /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		40E5F6D11B9CFC010065B60B /* WatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +217,7 @@
 		40383DF71B73B96B00EA5117 = {
 			isa = PBXGroup;
 			children = (
+				40C177A21BA70C9F00FF6CCE /* List Icon@3x.png */,
 				40383E021B73B96B00EA5117 /* AniPlay */,
 				40383E1B1B73B96B00EA5117 /* AniPlayTests */,
 				40383E011B73B96B00EA5117 /* Products */,
@@ -349,7 +350,6 @@
 				40580B471B751F5500994B6E /* Updated Icon@1x.png */,
 				40580B481B751F5500994B6E /* Updated_Icon@2x.png */,
 				40580B491B751F5500994B6E /* Updated Icon@3x.png */,
-				40383E5A1B73BDAA00EA5117 /* List Icon@3x.png */,
 				40580B3F1B73DAF700994B6E /* List_Icon@2x.png */,
 				40580B551B752D5C00994B6E /* History Icon@1x.png */,
 				40580B561B752D5C00994B6E /* History_Icon@2x.png */,
@@ -479,6 +479,7 @@
 				40BF443F1B769BE70021AEC2 /* History_Icon_Tab@2x.png in Resources */,
 				40279BC41B77E55C00CDA328 /* Updated_Icon_Tab_Small@2x.png in Resources */,
 				40383E131B73B96B00EA5117 /* LaunchScreen.xib in Resources */,
+				40C177A31BA70C9F00FF6CCE /* List Icon@3x.png in Resources */,
 				40580B391B73C26F00994B6E /* OpenSans-Italic.ttf in Resources */,
 				40BF44441B769BE70021AEC2 /* Updated_Icon_Tab.png in Resources */,
 				40BF44461B769BE70021AEC2 /* Updated_Icon_Tab@3x.png in Resources */,
@@ -505,7 +506,6 @@
 				40580B3C1B73C26F00994B6E /* OpenSans-Regular.ttf in Resources */,
 				40BF442D1B7697A90021AEC2 /* Home_Icon@2x.png in Resources */,
 				40580B3D1B73C26F00994B6E /* OpenSans-Semibold.ttf in Resources */,
-				40383E5B1B73BDAA00EA5117 /* List Icon@3x.png in Resources */,
 				40BF442E1B7697A90021AEC2 /* Home_Icon@3x.png in Resources */,
 				40279BE21B77FF4200CDA328 /* Menu Icon Copy@2x.png in Resources */,
 				40BF44341B7699A50021AEC2 /* Menu Icon@3x.png in Resources */,

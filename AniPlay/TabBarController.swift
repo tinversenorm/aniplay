@@ -12,6 +12,9 @@ class TabBarController: UITabBarController {
     override func viewWillLayoutSubviews() {
     }
     
+    @IBAction func unwindToTabBarController(segue: UIStoryboardSegue) {
+    }
+    
     override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject?) -> UIViewController? {
         var resultVC = self.selectedViewController?.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
         return resultVC
