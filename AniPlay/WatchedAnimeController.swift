@@ -13,10 +13,12 @@ class WatchedAnimeController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationBar!
     
-    var watchedList:[String] = NSUserDefaults.standardUserDefaults().arrayForKey("history") as? [String] ?? [];
+    var watchedList:[String] = NSUserDefaults.standardUserDefaults().objectForKey("history") as? [String] ?? [];
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         self.navigationController?.navigationBarHidden = true;
         makeLayout();
     }

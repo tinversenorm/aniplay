@@ -90,7 +90,7 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
             var destVC:WatchViewController = segue.destinationViewController as! WatchViewController;
             destVC.link = self.episodeList[path.row];
             destVC.animeName = self.animeName;
-            destVC.episodeNumber = String(path.row);
+            destVC.episodeNumber = String(path.row+1);
         }
     }
     

@@ -79,7 +79,6 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var sectionLetter = alphabet[section];
         if self.resultSearchController.active {
-            println(self.filteredTableData.count);
             return self.filteredTableData.count;
         } else {
             return count(AnimeData.animelist[sectionLetter]!);
@@ -93,7 +92,6 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("anime_all") as! UITableViewCell;
         // indexpath tells you row
         var sect = alphabet[indexPath.section]; // letter
-        
         if self.resultSearchController.active {
             var name: String = self.filteredTableData[indexPath.row];
             cell.textLabel?.text = name;
@@ -101,16 +99,16 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
             cell.textLabel?.text = AnimeData.animeids[AnimeData.animelist[sect]![indexPath.row]];
         }
         cell.textLabel?.font = UIFont(name: "Open Sans", size: 20.0);
-        println(cell.textLabel?.text);
         return cell;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var curanime = "";
         if segue.identifier == "showAnime" {
-            if ((sender?.isKindOfClass(UITableViewCell)) != nil) {
+            if ((sender?.isKindOfClass(UITableViewCell))!) {
                 curanime = sender?.textLabel?!.text as String!;
             }
+            curanime = sender as! String;
             var destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
             destVC.animeName = curanime;
         }
@@ -119,7 +117,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.resultSearchController.active = false
-            self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
+            self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
         })
     }
     
