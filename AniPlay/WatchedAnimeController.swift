@@ -10,9 +10,8 @@ import UIKit
 
 class WatchedAnimeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationBar!
-    
+    @IBOutlet var tableView: UITableView!
     var watchedList:[String] = NSUserDefaults.standardUserDefaults().objectForKey("history") as? [String] ?? [];
     
     override func viewDidLoad() {

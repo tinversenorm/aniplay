@@ -13,7 +13,6 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
     
-    
     let letters = NSCharacterSet.letterCharacterSet()
     var alphabet = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     
@@ -107,8 +106,9 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "showAnime" {
             if ((sender?.isKindOfClass(UITableViewCell))!) {
                 curanime = sender?.textLabel?!.text as String!;
+            } else {
+                curanime = sender as! String;
             }
-            curanime = sender as! String;
             var destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
             destVC.animeName = curanime;
         }
@@ -116,8 +116,12 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.resultSearchController.active = false
-            self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
+            if self.resultSearchController.active {
+                self.resultSearchController.active = false;
+                self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
+            } else {
+                self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
+            }
         })
     }
     

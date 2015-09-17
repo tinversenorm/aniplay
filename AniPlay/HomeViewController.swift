@@ -28,7 +28,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         Buttons.allIconView.addTarget(self, action: "goToAll:", forControlEvents: UIControlEvents.TouchUpInside);
         Buttons.curIconView.addTarget(self, action: "goToCurrent:", forControlEvents: UIControlEvents.TouchUpInside);
         Buttons.watchedIconView.addTarget(self, action: "goToWatched:", forControlEvents: UIControlEvents.TouchUpInside);
-        println(NSUserDefaults.standardUserDefaults().arrayForKey("history")!);
     }
     
     func makeLayout() {

@@ -77,7 +77,7 @@ class AnimeViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showEpisodes" {
+        if segue.identifier == "showEpisodes" || segue.identifier == "showEpisodesButton" {
             var destVC: EpisodeViewController = segue.destinationViewController as! EpisodeViewController;
             destVC.animeName = self.animeName;
         }
@@ -98,7 +98,7 @@ class AnimeViewController: UIViewController {
         
         // set image View to be directly above
         // might add a nice frame later or eventually mask with a circle
-        imageView.frame = CGRectMake(screenWidth/2 - 100, aniplayView.frame.origin.y + aniplayView.frame.height + 10, 200, 200);
+        imageView.frame = CGRectMake(screenWidth/2 - 100, aniplayView.frame.origin.y + aniplayView.frame.height, 200, 200);
         imageView.image = mask;
         self.view.addSubview(imageView);
         
