@@ -43,11 +43,8 @@ class AnimeViewController: UIViewController {
                 /* Attempt to mask image, for now will keep on hold */
                 //var masked = self.maskImage(img, withMask: UIImage(named: "Mask.png")!);
                 //self.imageView.image = masked;
-                println(imglink);
-                println(data.length);
                 self.imageView.contentMode = UIViewContentMode.ScaleAspectFit;
                 self.imageView.image = img;
-                println(image.size.height);
             });
         });
         

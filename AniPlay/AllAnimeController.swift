@@ -115,25 +115,25 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if self.resultSearchController.active {
-                self.resultSearchController.active = false;
-                self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
-            } else {
-                self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
-            }
-        })
+        if self.resultSearchController.active {
+            self.resultSearchController.active = false;
+            println(self.filteredTableData);
+            println(self.filteredTableData[indexPath.row]);
+            self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
+        } else {
+            self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
+        }
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchText = searchController.searchBar.text
-        
-        filteredTableData = searchText.isEmpty ? AnimeData.nameList : AnimeData.nameList.filter({(dataString: String) -> Bool in
-            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            let searchText = searchController.searchBar.text
+            self.filteredTableData.removeAll(keepCapacity: false);
+            self.filteredTableData = searchText.isEmpty ? AnimeData.nameList : AnimeData.nameList.filter({(dataString: String) -> Bool in
+                return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+            })
+            self.tableView.reloadData()
         })
-        
-        tableView.reloadData()
-
     }
     
     override func didReceiveMemoryWarning() {
