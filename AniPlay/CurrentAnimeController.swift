@@ -23,16 +23,16 @@ class CurrentAnimeController: UIViewController, UITableViewDelegate, UITableView
         let url = NSURL(string: "http://pranavh.webfactional.com/aniplay/airinganimelist.php");
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) -> Void in
             if error != nil {
-                println(error);
+                print(error);
             } else {
-                let jsonresult = JSON(data: data);
-                for (key: String, subJson: JSON) in jsonresult {
+                let jsonresult = JSON(data: data!);
+                for (key, subJson): (String, JSON) in jsonresult {
                     var num: Int = (key as NSString).integerValue;
                     self.currentAnimeList.append(subJson[0].description);
                 }
                 //remove all current anime i don't have data for D;
                 var finallist:[String] = [];
-                for(var i = 0; i < count(self.currentAnimeList); i++) {
+                for(var i = 0; i < self.currentAnimeList.count; i++) {
                     if AnimeData.animeidsreverse[self.currentAnimeList[i]] != nil {
                         finallist.append(self.currentAnimeList[i]);
                     }
@@ -53,7 +53,7 @@ class CurrentAnimeController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count(currentAnimeList);
+        return currentAnimeList.count;
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -66,7 +66,7 @@ class CurrentAnimeController: UIViewController, UITableViewDelegate, UITableView
             if ((sender?.isKindOfClass(UITableViewCell)) != nil) {
                 curanime = sender?.textLabel?!.text as String!;
             }
-            var destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
+            let destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
             destVC.animeName = curanime;
         }
     }

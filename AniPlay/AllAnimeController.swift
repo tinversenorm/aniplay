@@ -58,7 +58,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         if self.resultSearchController.active {
             return nil;
         } else {
@@ -76,11 +76,11 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     
     // num Rows in table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var sectionLetter = alphabet[section];
+        let sectionLetter = alphabet[section];
         if self.resultSearchController.active {
             return self.filteredTableData.count;
         } else {
-            return count(AnimeData.animelist[sectionLetter]!);
+            return (AnimeData.animelist[sectionLetter]!).count;
         }
     }
     
@@ -88,7 +88,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     // defines contents of each indiv. cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // identifier ids cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("anime_all") as! UITableViewCell;
+        var cell = tableView.dequeueReusableCellWithIdentifier("anime_all")!;
         // indexpath tells you row
         var sect = alphabet[indexPath.section]; // letter
         if self.resultSearchController.active {
@@ -109,7 +109,7 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 curanime = sender as! String;
             }
-            var destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
+            let destVC: AnimeViewController = segue.destinationViewController as! AnimeViewController;
             destVC.animeName = curanime;
         }
     }
@@ -117,8 +117,8 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.resultSearchController.active {
             self.resultSearchController.active = false;
-            println(self.filteredTableData);
-            println(self.filteredTableData[indexPath.row]);
+            print(self.filteredTableData, terminator: "");
+            print(self.filteredTableData[indexPath.row], terminator: "");
             self.performSegueWithIdentifier("showAnime", sender: self.filteredTableData[indexPath.row]);
         } else {
             self.performSegueWithIdentifier("showAnime", sender: self.tableView.cellForRowAtIndexPath(indexPath));
@@ -129,8 +129,8 @@ class AllAnimeController: UIViewController, UITableViewDelegate, UITableViewData
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             let searchText = searchController.searchBar.text
             self.filteredTableData.removeAll(keepCapacity: false);
-            self.filteredTableData = searchText.isEmpty ? AnimeData.nameList : AnimeData.nameList.filter({(dataString: String) -> Bool in
-                return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+            self.filteredTableData = searchText!.isEmpty ? AnimeData.nameList : AnimeData.nameList.filter({(dataString: String) -> Bool in
+                return dataString.rangeOfString(searchText!, options: .CaseInsensitiveSearch) != nil
             })
             self.tableView.reloadData()
         })

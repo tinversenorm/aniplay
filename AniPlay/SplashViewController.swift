@@ -50,14 +50,14 @@ class SplashViewController: UIViewController {
         let session = NSURLSession.sharedSession();
         let task = session.dataTaskWithURL(url!, completionHandler: { data, response, error -> Void in
             if (error != nil) {
-                println(error);
+                print(error);
             } else {
                 //println(NSString(data: data, encoding: NSUTF8StringEncoding));
                 // takes json string and converts
-                let jsonresult = JSON(data: data);
+                let jsonresult = JSON(data: data!);
                 //println(jsonresult);
                 var count = 0;
-                for (key: String, subJson: JSON) in jsonresult {
+                for (key, subJson): (String, JSON) in jsonresult {
                     //Do something you want
                     //subJson["name"].string!
                     var id = key.substringFrom(5);
@@ -97,7 +97,7 @@ class SplashViewController: UIViewController {
                         var str = v as NSString;
                         arr.append(Int(str.intValue));
                     }
-                    sort(&arr);
+                    arr.sortInPlace();
                     var newval: [String] = [];
                     for i in 0...arr.count-1 {
                         newval.append(arr[i].description)

@@ -26,26 +26,26 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.dataSource = self;
         makeLayout();
         
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right;
         self.view.addGestureRecognizer(swipeRight);
         
         // Load episode list
-        var dbname = AnimeData.animeidsreverse[animeName]! + "E";
+        let dbname = AnimeData.animeidsreverse[animeName]! + "E";
         //http://pranavh.webfactional.com/aniplay/episodedbtojson.php?table=10E
         // ^ example
         //dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        var url = NSURL(string: "http://pranavh.webfactional.com/aniplay/episodedbtojson.php?table=" + dbname);
-        var task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) -> Void in
+        let url = NSURL(string: "http://pranavh.webfactional.com/aniplay/episodedbtojson.php?table=" + dbname);
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) -> Void in
             if error != nil {
-                println(error);
+                print(error);
             } else {
-                let jsonresult = JSON(data: data);
-                for (key: String, subJson: JSON) in jsonresult {
+                let jsonresult = JSON(data: data!);
+                for (key, subJson): (String, JSON) in jsonresult {
                     var num: Int = (key as NSString).integerValue;
                     self.episodeLinks[key] = subJson["eplink"].string!;
                     self.episodeList.append(subJson["eplink"].string!);
-                    println()
+                    print("")
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData();
@@ -73,8 +73,8 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "episode")
         //println(String(indexPath.row));
-        var link = self.episodeLinks[String(indexPath.row)]?.substringFrom(15);
-        cell.textLabel?.text = "Episode " + String(count(episodeLinks)-indexPath.row);
+        _ = self.episodeLinks[String(indexPath.row)]?.substringFrom(15);
+        cell.textLabel?.text = "Episode " + String(episodeLinks.count-indexPath.row);
         cell.textLabel?.font = UIFont(name: "Open Sans", size: 20.0);
         return cell;
     }
@@ -85,9 +85,9 @@ class EpisodeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "watchSegue" {
-            var link = "";
-            let path = self.tableView.indexPathForSelectedRow()!
-            var destVC:WatchViewController = segue.destinationViewController as! WatchViewController;
+            _ = "";
+            let path = self.tableView.indexPathForSelectedRow!
+            let destVC:WatchViewController = segue.destinationViewController as! WatchViewController;
             destVC.link = self.episodeList[path.row];
             destVC.animeName = self.animeName;
             destVC.episodeNumber = String(path.row+1);

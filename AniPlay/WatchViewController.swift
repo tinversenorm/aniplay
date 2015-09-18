@@ -18,12 +18,12 @@ class WatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        if NSUserDefaults.standardUserDefaults().arrayForKey("history") == nil || count(NSUserDefaults.standardUserDefaults().arrayForKey("history")!) < 1  {
+        if NSUserDefaults.standardUserDefaults().arrayForKey("history") == nil || (NSUserDefaults.standardUserDefaults().arrayForKey("history")!).count < 1  {
             var historyarr:[String] = [];
             historyarr.append("Episode " + episodeNumber + ":" + animeName);
             NSUserDefaults.standardUserDefaults().setObject(historyarr, forKey: "history");
         } else {
-            var historyarr:[String] = NSUserDefaults.standardUserDefaults().arrayForKey("history")! as! [String];
+            let historyarr:[String] = NSUserDefaults.standardUserDefaults().arrayForKey("history")! as! [String];
             var newarr:[String] = [];
             newarr.append("Episode " + episodeNumber + ":" + animeName);
             for anime in historyarr {
@@ -33,7 +33,7 @@ class WatchViewController: UIViewController {
         }
         super.view.addSubview(webView);
         
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right;
         self.webView.addGestureRecognizer(swipeRight);
         

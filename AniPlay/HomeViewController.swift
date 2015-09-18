@@ -31,8 +31,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func makeLayout() {
-        var screenWidth  = UIScreen.mainScreen().bounds.width;
-        var screenHeight = UIScreen.mainScreen().bounds.height;
+        let screenWidth  = UIScreen.mainScreen().bounds.width;
+        let screenHeight = UIScreen.mainScreen().bounds.height;
         
         self.view.backgroundColor = UIColor(red: 0.969, green: 0.965, blue: 0.965, alpha: 1.0)
         
@@ -49,31 +49,31 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(searchBar);*/
         
         // AniPlay Icon
-        var aniplayImage = UIImage(named: "Home_Icon.png");
-        var aniplayView = UIImageView(frame: CGRectMake((screenWidth/2)-56, searchBar.frame.origin.y-138, 112, 96))
+        let aniplayImage = UIImage(named: "Home_Icon.png");
+        let aniplayView = UIImageView(frame: CGRectMake((screenWidth/2)-56, searchBar.frame.origin.y-138, 112, 96))
         aniplayView.image = aniplayImage!;
         self.view.addSubview(aniplayView);
         
         // Menu Icon
-        var menuIcon = UIImage(named: "Menu Icon.png");
-        var menuIconView = UIImageView(frame: CGRectMake(screenWidth-(29+42), 39, 42, 35));
+        let menuIcon = UIImage(named: "Menu Icon.png");
+        let menuIconView = UIImageView(frame: CGRectMake(screenWidth-(29+42), 39, 42, 35));
         menuIconView.image = menuIcon!;
         self.view.addSubview(menuIconView);
         
         // Current Anime Icon
-        var curIcon = UIImage(named: "Updated_Icon_Tab.png");
+        let curIcon = UIImage(named: "Updated_Icon_Tab.png");
         Buttons.curIconView = UIButton(frame: CGRectMake((screenWidth/2)-23, screenHeight-(36+46), 46, 46))
         Buttons.curIconView.setImage(curIcon, forState: UIControlState.Normal);
         self.view.addSubview(Buttons.curIconView);
         
         // All Anime Icon
-        var allIcon = UIImage(named: "List_Icon_Tab.png");
+        let allIcon = UIImage(named: "List_Icon_Tab.png");
         Buttons.allIconView = UIButton(frame: CGRectMake(44, Buttons.curIconView.frame.origin.y-3, 44, 53));
         Buttons.allIconView.setImage(allIcon, forState: UIControlState.Normal);
         self.view.addSubview(Buttons.allIconView);
         
         // Watched Icon
-        var watchedIcon = UIImage(named: "History_Icon_Tab.png");
+        let watchedIcon = UIImage(named: "History_Icon_Tab.png");
         Buttons.watchedIconView = UIButton(frame: CGRectMake(screenWidth-(38+53), Buttons.curIconView.frame.origin.y, 53, 46));
         Buttons.watchedIconView.setImage(watchedIcon, forState: UIControlState.Normal);
         self.view.addSubview(Buttons.watchedIconView);
@@ -114,11 +114,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "hometocurrenttab") {
-            var destTabBarController:UITabBarController = segue.destinationViewController as! UITabBarController;
+            let destTabBarController:UITabBarController = segue.destinationViewController as! UITabBarController;
             destTabBarController.selectedIndex = 1;
         }
         if (segue.identifier == "hometowatchedtab") {
-            var destTabBarController:UITabBarController = segue.destinationViewController as! UITabBarController;
+            let destTabBarController:UITabBarController = segue.destinationViewController as! UITabBarController;
             destTabBarController.selectedIndex = 2;
         }
     }

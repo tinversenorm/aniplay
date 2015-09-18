@@ -11,12 +11,12 @@ extension String {
     }
 	
 	func length() -> Int {
-		return count(self)
+		return self.characters.count
 	}
 	
 	func reverse() -> String {
 		var reverseStr = ""
-		for character in self {
+		for character in self.characters {
 			reverseStr = "\(character)\(reverseStr)"
 		}
 		return reverseStr
@@ -34,7 +34,7 @@ extension String {
 		return self.substring(start: 0, end: end)
 	}
 	
-	func substring (var #start: Int, var end: Int) -> String {
+	func substring (var start start: Int, var end: Int) -> String {
 		var flipped = false
 		
 		if start > end {
@@ -51,7 +51,7 @@ extension String {
 		return substring
 	}
 	
-	func substring (#start: String, end: String) -> String {
+	func substring (start start: String, end: String) -> String {
 		return self[start, end]
 	}
 	
@@ -66,7 +66,7 @@ extension String {
 		
 		assert( i < self.length(), "Index is beyond range")
 		
-		return self[advance(self.startIndex, i)]
+		return self[self.startIndex.advancedBy(i)]
 	}
 	
 	subscript (str: String) -> Int {
@@ -75,7 +75,7 @@ extension String {
 		
 		assert(possibleIndex != nil, "No substring found")
 		
-		return "\(self.rangeOfString(str)!.startIndex)".toInt()!
+		return Int("\(self.rangeOfString(str)!.startIndex)")!
 	}
 	
 	subscript (str_start: String, str_end: String) -> String {

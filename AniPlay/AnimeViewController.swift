@@ -25,20 +25,20 @@ class AnimeViewController: UIViewController {
         self.navigationController?.navigationBarHidden = true;
         
         // load image
-        var animeID = AnimeData.animeidsreverse[self.animeName];
+        let animeID = AnimeData.animeidsreverse[self.animeName];
         var animeInfo = AnimeData.animeinfo[animeID!];
-        var imglink = animeInfo!["imglink"];
-        var summary = animeInfo!["summary"];
+        let imglink = animeInfo!["imglink"];
+        let summary = animeInfo!["summary"];
         var numEpisodes = animeInfo!["num_episodes"];
         //println(imglink);
         
         var image = UIImage();
         // download image
-        var q:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        let q:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_async(q, {
             /* Fetch the image from the server... */
-            var data:NSData = NSData(contentsOfURL: NSURL(string: imglink!)!)!;
-            var img:UIImage = UIImage(data: data)!;
+            let data:NSData = NSData(contentsOfURL: NSURL(string: imglink!)!)!;
+            let img:UIImage = UIImage(data: data)!;
             dispatch_async(dispatch_get_main_queue(), {
                 /* Attempt to mask image, for now will keep on hold */
                 //var masked = self.maskImage(img, withMask: UIImage(named: "Mask.png")!);
@@ -50,11 +50,11 @@ class AnimeViewController: UIViewController {
         
         makeLayout(summary: summary!);
         
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "unwind:");
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right;
         self.view.addGestureRecognizer(swipeRight);
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "episodes:");
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "episodes:");
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left;
         self.view.addGestureRecognizer(swipeLeft);
     }
@@ -75,7 +75,7 @@ class AnimeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showEpisodes" || segue.identifier == "showEpisodesButton" {
-            var destVC: EpisodeViewController = segue.destinationViewController as! EpisodeViewController;
+            let destVC: EpisodeViewController = segue.destinationViewController as! EpisodeViewController;
             destVC.animeName = self.animeName;
         }
     }
@@ -88,8 +88,8 @@ class AnimeViewController: UIViewController {
         titleLabel.frame.size.width = screenWidth;
         
         // AniPlay Icon -- might make it a button
-        var aniplayImage = UIImage(named: "Home_Icon.png");
-        var aniplayView = UIImageView(frame: CGRectMake(30, 38, 53, 45))
+        let aniplayImage = UIImage(named: "Home_Icon.png");
+        let aniplayView = UIImageView(frame: CGRectMake(30, 38, 53, 45))
         aniplayView.image = aniplayImage;
         self.view.addSubview(aniplayView);
         
@@ -104,8 +104,8 @@ class AnimeViewController: UIViewController {
         
         
         // Menu Icon
-        var menuIcon = UIImage(named: "Menu Icon.png");
-        var menuIconView = UIImageView(frame: CGRectMake(screenWidth-(29+42), 39, 42, 35));
+        let menuIcon = UIImage(named: "Menu Icon.png");
+        let menuIconView = UIImageView(frame: CGRectMake(screenWidth-(29+42), 39, 42, 35));
         menuIconView.image = menuIcon!;
         self.view.addSubview(menuIconView);
         
